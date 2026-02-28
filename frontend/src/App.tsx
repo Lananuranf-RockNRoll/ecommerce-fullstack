@@ -8,6 +8,7 @@ import ProductDetailPage from './pages/ProductDetailPage'
 import CartPage from './pages/CartPage'
 import { LoginPage, RegisterPage } from './pages/AuthPages'
 import OrdersPage from './pages/OrdersPage'
+import AdminPage from './pages/AdminPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { token } = useAuthStore()
@@ -34,6 +35,9 @@ export default function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/admin" element={
+              <ProtectedRoute><AdminPage /></ProtectedRoute>
+            } />
             <Route path="/orders" element={
               <ProtectedRoute><OrdersPage /></ProtectedRoute>
             } />
