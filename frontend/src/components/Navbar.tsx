@@ -82,21 +82,32 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-surface border-t border-cream-dark px-6 py-4 flex flex-col gap-4">
-          <Link to="/" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>Home</Link>
-          <Link to="/products" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>Shop</Link>
-          {user ? (
-            <>
-              <Link to="/orders" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>My Orders</Link>
-              <button onClick={handleLogout} className="text-sm font-medium text-red-500 text-left">Logout</button>
-            </>
-          ) : (
-            <>
-              <Link to="/login" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>Login</Link>
-              <Link to="/register" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>Register</Link>
-            </>
-          )}
-        </div>
+          <div className="md:hidden bg-surface border-t border-cream-dark px-6 py-4 flex flex-col gap-4">
+            <Link to="/" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>Home</Link>
+            <Link to="/products" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>Shop</Link>
+
+            {user?.role === 'admin' && (
+                <Link
+                    to="/admin"
+                    className="text-sm font-medium text-accent"
+                    onClick={() => setMobileOpen(false)}
+                >
+                  Admin
+                </Link>
+            )}
+
+            {user ? (
+                <>
+                  <Link to="/orders" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>My Orders</Link>
+                  <button onClick={handleLogout} className="text-sm font-medium text-red-500 text-left">Logout</button>
+                </>
+            ) : (
+                <>
+                  <Link to="/login" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>Login</Link>
+                  <Link to="/register" className="text-sm font-medium" onClick={() => setMobileOpen(false)}>Register</Link>
+                </>
+            )}
+          </div>
       )}
     </header>
   )
