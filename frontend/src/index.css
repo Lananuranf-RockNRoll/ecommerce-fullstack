@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cream font-body text-ink antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-ink text-cream px-6 py-3 text-sm font-medium tracking-widest uppercase
+           transition-all duration-200 hover:bg-ink-soft active:scale-95;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-ink px-6 py-3 text-sm font-medium tracking-widest uppercase
+           transition-all duration-200 hover:bg-accent-dark active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-ink text-ink px-6 py-3 text-sm font-medium tracking-widest uppercase
+           transition-all duration-200 hover:bg-ink hover:text-cream active:scale-95;
+  }
+
+  .card {
+    @apply bg-surface shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+
+  .input {
+    @apply w-full border border-cream-dark bg-surface px-4 py-3 text-sm text-ink
+           placeholder-ink/40 focus:outline-none focus:border-accent transition-colors duration-200;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 text-xs font-mono tracking-wider uppercase;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { @apply bg-cream-dark; }
+::-webkit-scrollbar-thumb { @apply bg-accent; }
